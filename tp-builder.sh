@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Autohr: Thomas Neuenschwander
+# Author: Thomas Neuenschwander
 # GitHub: https://github.com/thomneuenschwander
 
 # Função para pedir ao usuário para escolher um diretório
