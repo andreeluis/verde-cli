@@ -5,7 +5,7 @@
 
 # Função para pedir ao usuário para escolher um diretório
 choose_directory() {
-    echo "Selecione o TP atual. {\"tp01\", \"tp02\", \"tp03\"} "
+    echo "Selecione o TP atual. {\"tp01\", \"tp02\", \"tp03\", \"tp04\"} "
     read selected_directory
 }
 
