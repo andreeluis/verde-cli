@@ -3,12 +3,6 @@
 # Author: Thomas Neuenschwander
 # GitHub: https://github.com/thomneuenschwander
 
-# Função para pedir ao usuário para escolher um diretório
-choose_directory() {
-    echo "Selecione o TP atual. {\"tp01\", \"tp02\", \"tp03\", \"tp04\"} "
-    read selected_directory
-}
-
 # Função para converter o nome do diretório para maiúsculas
 convert_to_uppercase() {
     uppercase_directory=$(echo "$selected_directory" | tr '[:lower:]' '[:upper:]')
@@ -81,7 +75,14 @@ download_csv_files() {
 }
 
 main() {
-    choose_directory
+    echo "⭐ Selecione o número do TP atual 🤔:"
+    PS3="▶️ "
+    select selected_directory in tp01 tp02 tp03 tp04;
+    do
+       echo "Montando ${selected_directory^^} 🤓🚀..."
+       break
+    done
+    
     convert_to_uppercase
 
     # URL do repositório
