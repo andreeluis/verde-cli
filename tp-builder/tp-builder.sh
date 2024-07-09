@@ -3,16 +3,6 @@
 # Author: Thomas Neuenschwander
 # GitHub: https://github.com/thomneuenschwander
 
-# Função para converter o nome do diretório para maiúsculas
-convert_to_uppercase() {
-    uppercase_directory=$(echo "$selected_directory" | tr '[:lower:]' '[:upper:]')
-}
-
-# Função para criar diretório local para salvar os arquivos baixados
-create_local_directory() {
-    mkdir -p "$uppercase_directory"
-}
-
 # Função para obter a lista de arquivos e subdiretórios do repositório
 get_subdirectories_and_files() {
     response=$(curl -s "$API_URL")
@@ -58,7 +48,7 @@ download_files() {
 download_pdf() {
     # Ajusta o nome do diretório para o formato correto da URL (tp3 em vez de tp03)
     short_selected_directory=$(echo "$selected_directory" | sed 's/tp0/tp/')
-    local pdf_url="https://github.com/icei-pucminas/aeds2/raw/master/tps/enunciado/$short_selected_directory.pdf"
+    local pdf_url="$REPO_URL/raw/master/tps/enunciado/$short_selected_directory.pdf"
     local output_dir="$uppercase_directory"
     
     echo "Baixando $pdf_url"
@@ -76,14 +66,14 @@ download_csv_files() {
 
 main() {
     echo "⭐ Selecione o número do TP atual 🤔:"
-    PS3="▶️ "
+    PS3="👉 "
     select selected_directory in tp01 tp02 tp03 tp04;
     do
        echo "Montando ${selected_directory^^} 🤓🚀..."
        break
     done
     
-    convert_to_uppercase
+    uppercase_directory="${selected_directory^^}"
 
     # URL do repositório
     REPO_URL="https://github.com/icei-pucminas/aeds2"
@@ -94,7 +84,8 @@ main() {
     # URL da API para listar os arquivos no diretório
     API_URL="https://api.github.com/repos/icei-pucminas/aeds2/contents/$DIR_PATH"
 
-    create_local_directory
+    mkdir -p "$uppercase_directory"
+
     get_subdirectories_and_files
     download_pdf
     download_csv_files
