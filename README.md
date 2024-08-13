@@ -1,7 +1,7 @@
 # Verde CLI
 O **Verde CLI** é uma ferramenta de linha de comando desenvolvida para facilitar a correção de código de exercícios. Com ela, é possível compilar e executar o código de um exercício, além de testá-lo com os testes do arquivo `pub.in` e comparar com o arquivo `pub.out`.
 
-Adicionalmente, oferecemos um [script](./tp-builder/) para automatizar o download dos arquivos `pub.in` e `pub.out` para os estudantes matriculados na disciplina de **AEDS II** - Algoritmos e Estruturas de Dados II, na PUC Minas.
+Adicionalmente, oferecemos o [tp-builder](./tp-builder/) para automatizar o download dos arquivos `pub.in` e `pub.out` para os estudantes matriculados na disciplina de **AEDS II** - Algoritmos e Estruturas de Dados II, na PUC Minas.
 
 ## 📋 Pré-requisitos
 Para usar o **Verde CLI**, você precisa estar em um ambiente Linux e ter os seguintes programas pré-instalados em seu computador:
