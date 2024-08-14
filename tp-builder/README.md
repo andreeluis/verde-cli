@@ -28,7 +28,7 @@ Siga os passos abaixo para usar o script e baixar automaticamente os arquivos `p
 
 ### 1. Baixe o script
 
-Primeiro, baixe este script para o seu ambiente local:
+Primeiro, baixe este script para o seu ambiente local. **Pode ser feito direto pelo GitHub** ou utilize o seguinte comando:
 
 ```bash
 curl -o tp-builder.sh https://raw.githubusercontent.com/thomneuenschwander/bash-scripts-collection/main/tp-builder.sh
