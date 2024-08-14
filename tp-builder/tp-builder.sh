@@ -58,7 +58,15 @@ download_files() {
     fi
 }
 
+download_pdf() {
+    # Ajusta o nome do diretório para o formato correto da URL (tp3 em vez de tp03)
+    short_selected_directory=$(echo "$selected_directory" | sed 's/tp0/tp/')
+    local pdf_url="$REPO_URL/raw/master/tps/enunciado/$short_selected_directory.pdf"
+    local output_dir="$selected_directory"
 
+    echo "Baixando $pdf_url"
+    curl -L -o "$output_dir/$short_selected_directory.pdf" "$pdf_url" || echo "Arquivo $short_selected_directory.pdf não encontrado"
+}
 
 
 # Função para baixar arquivos CSV
