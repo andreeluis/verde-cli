@@ -61,7 +61,7 @@ filesDiff() {
 
   # Verificar se diff_lines está definido e não está vazio
   if [ -z "$diff_lines" ]; then
-    echo -e $(tput setaf 3)$(tput bold)"\n | Nota: 100% \U0001F389 |\n" $(tput sgr0)
+    echo -e $(tput setaf 3)$(tput bold)"\n | Nota: 100% \U0001F389 \n" $(tput sgr0)
     exit 1
   else
     # Calcular a porcentagem de diferença
