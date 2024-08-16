@@ -1,7 +1,7 @@
 # Verde CLI
 O **Verde CLI** é uma ferramenta de linha de comando desenvolvida para facilitar a correção de código de exercícios. Com ela, é possível compilar e executar o código de um exercício, além de testá-lo com os testes do arquivo `pub.in` e comparar com o arquivo `pub.out`.
 
-Adicionalmente, oferecemos o [tp-builder](./tp-builder/) para automatizar o download dos arquivos `pub.in` e `pub.out` para os estudantes matriculados na disciplina de **AEDS II** - Algoritmos e Estruturas de Dados II, na PUC Minas.
+Adicionalmente, oferecemos o [Grafite CLI](./grafite/) para automatizar o download dos arquivos `pub.in` e `pub.out` para os estudantes matriculados na disciplina de **AEDS II** - Algoritmos e Estruturas de Dados II, na PUC Minas.
 
 ## 📋 Pré-requisitos
 Para usar o **Verde CLI**, você precisa estar em um ambiente Linux e ter os seguintes programas pré-instalados em seu computador:
@@ -14,10 +14,10 @@ Para usar o **Verde CLI**, siga os passos abaixo:
 
 ### 1. Baixar o Verde CLI
 Primeiramente, você precisa baixar o **Verde CLI** em seu computador. Para isso, você pode clonar o repositório do projeto em sua máquina. Para isso, abra o terminal e execute o seguinte comando:
-  ```sh
-  git clone https://github.com/andreeluis/verde-cli.git
-  cd verde-cli
-  ```
+```sh
+git clone https://github.com/andreeluis/verde-cli.git
+cd verde-cli
+```
 
 ### 2. Dar permissão de execução
 Depois de baixar o **Verde CLI**, você precisa dar permissão de execução para o arquivo `verde.sh`. Para isso, execute o seguinte comando:
