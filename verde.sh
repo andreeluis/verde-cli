@@ -57,7 +57,7 @@ filesDiff() {
   lines_arq2=$(wc -l < $2)
 
   # Contar o número de linhas diferentes usando git diff
-  diff_lines=$(git diff --no-index --stat "$1" "$2" | tail -1 | awk '{print $4}')
+  diff_lines=$(git diff --ignore-cr-at-eol --no-index --stat "$1" "$2" | tail -1 | awk '{print $4}')
 
   # Verificar se diff_lines está definido e não está vazio
   if [ -z "$diff_lines" ]; then
@@ -76,7 +76,7 @@ filesDiff() {
     # Exibir linhas diferentes
     echo -e $(tput setaf 4)$(tput bold)" | \U000026A0 Diferenças:\n"$(tput sgr0)
 
-    git diff --no-index --line-prefix="   " --word-diff=color -U0 --color=always "$1" "$2" | tail -n +5
+    git diff --ignore-cr-at-eol --no-index --line-prefix="   " --word-diff=color -U0 --color=always "$1" "$2" | tail -n +5
   fi
 }
 
