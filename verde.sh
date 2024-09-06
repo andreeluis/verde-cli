@@ -9,14 +9,42 @@ CODE_FILES=()
 CODE_FILE=""
 CODE_LANG=""
 TEST_FLAG=0
+COMPILE_FLAG=0
 
 # Processar as flags
-while getopts 't' opt; do
+while getopts 'ct' opt; do
   case $opt in
+    c) COMPILE_FLAG=1 ;;
     t) TEST_FLAG=1 ;;
-    *) printf "Uso: %s [-t]\n" "$0" 1>&2; exit 1 ;;
+    *) printf "Uso: %s [-c -t]\n" "$0" 1>&2; exit 1 ;;
   esac
 done
+
+# Se nenhuma flag foi passada, executar o script grafite.sh
+if [ $OPTIND -eq 1 ]; then
+  # Escolher o que executar
+  PS3="Selecione a opção desejada: "
+  select opt in "Executar código" "Corrigir exercício" "TP Builder"; do
+    case $opt in
+      "Executar código")
+        COMPILE_FLAG=1
+        break
+        ;;
+      "Corrigir exercício")
+        TEST_FLAG=1
+        break
+        ;;
+      "TP Builder")
+        bash ./grafite/grafite.sh
+        exit 0
+        ;;
+      *)
+        echo "Opção inválida. Por favor, tente novamente." >&2
+        ;;
+    esac
+  done
+fi
+
 
 for lang in "${SUP_LANGS[@]}"; do
   # Usar globbing para encontrar arquivos com a extensão atual da iteração
