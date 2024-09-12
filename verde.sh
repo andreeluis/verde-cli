@@ -4,6 +4,7 @@
 # Recebe parametros:
 #   -t : flag para teste automático (pub.in e pub.out necessários)
 
+DIR=$(readlink $(which verde) | xargs dirname)
 SUP_LANGS=(java c cpp)
 CODE_FILES=()
 CODE_FILE=""
@@ -35,7 +36,7 @@ if [ $OPTIND -eq 1 ]; then
         break
         ;;
       "TP Builder")
-        bash ./grafite/grafite.sh
+        bash $DIR/grafite/grafite.sh
         exit 0
         ;;
       *)

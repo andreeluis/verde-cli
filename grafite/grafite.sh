@@ -2,7 +2,7 @@
 
 SUP_EXS=("AEDS II (tp-builder)")
 SELECTED_EXS=""
-DIR=$(readlink $(which grafite) | xargs dirname)
+DIR=$(readlink $(which verde) | xargs dirname)
 
 # Escolher o exercício
 # PS3="Selecione o exercício (1-${#SUP_EXS[@]}): "
@@ -16,7 +16,7 @@ DIR=$(readlink $(which grafite) | xargs dirname)
 # done
 
 # Executar o script do exercício selecionado
-bash $DIR/tp-builder.sh
+bash $DIR/grafite/tp-builder.sh
 
 # case $SELECTED_EXS in
 #   "AEDS II (tp-builder)")
