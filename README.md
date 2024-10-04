@@ -3,6 +3,14 @@ O **Verde CLI** é uma ferramenta de linha de comando desenvolvida para facilita
 
 Adicionalmente, oferecemos o [Grafite CLI](./grafite/) para automatizar o download dos arquivos `pub.in` e `pub.out` para os estudantes matriculados na disciplina de **AEDS II** - Algoritmos e Estruturas de Dados II, na PUC Minas.
 
+Você pode assistir a [apresentação do **Verde CLI**](https://www.youtube.com/watch?v=gBBXjS0McjM) no YouTube clicando na imagem abaixo:
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=gBBXjS0McjM">
+    <img src="https://img.youtube.com/vi/gBBXjS0McjM/maxresdefault.jpg" width="500">
+  </a>
+</p>
+
 ## 📋 Pré-requisitos
 Para usar o **Verde CLI**, você precisa estar em um ambiente Linux e ter os seguintes programas pré-instalados em seu computador:
 - [Git](https://git-scm.com/)
