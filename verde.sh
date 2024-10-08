@@ -123,16 +123,18 @@ case $CODE_LANG in
 esac
 
 executar_java() {
+  CLASS_FILE=$(basename "$CODE_FILE" .java)
+
   # Executar o arquivo compilado
   if [ $TEST_FLAG -eq 1 ]; then
     if [ -f "pub.in" ] && [ -f "pub.out" ]; then
-      java "${CODE_FILE}" < "pub.in" > "a.out"
+      java "${CLASS_FILE}" < "pub.in" > "a.out"
       filesDiff "a.out" "pub.out"
     else
       echo "Arquivos de teste não encontrados" >&2
     fi
   else
-    java "${CODE_FILE}"
+    java "${CLASS_FILE}"
   fi
 }
 
