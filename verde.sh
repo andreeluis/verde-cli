@@ -131,13 +131,13 @@ test_code() {
   for test_case in "${TEST_CASES[@]}"; do
     case $CODE_LANGUAGE in
       "java")
-        java "${CODE_FILE%.*}" < "$test_case.in" > "$test_case.res"
+        java "${CODE_FILE%.*}" < "$test_case.in" > "$test_case.res.out"
         ;;
       "c")
-        ./"${CODE_FILE%.*}" < "$test_case.in" > "$test_case.res"
+        ./"${CODE_FILE%.*}" < "$test_case.in" > "$test_case.res.out"
         ;;
       "cpp")
-        ./"${CODE_FILE%.*}" < "$test_case.in" > "$test_case.res"
+        ./"${CODE_FILE%.*}" < "$test_case.in" > "$test_case.res.out"
         ;;
       *)
         echo "Linguagem não suportada" >&2
@@ -147,7 +147,7 @@ test_code() {
 
     echo -e "$(tput setaf 6)$(tput bold)> Caso de teste: $(tput smul)$test_case.in$(tput sgr0)"
 
-    get_files_diff "$test_case.res" "$test_case.out"
+    get_files_diff "$test_case.res.out" "$test_case.out"
   done
 }
 
