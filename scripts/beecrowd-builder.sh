@@ -25,8 +25,12 @@ save_to_md() {
 	echo "# [$problem_title]($problem_url)" > $md_file
 	echo "" >> $md_file
 	echo "$problem_description" >> $md_file
+
 	for img in $problem_description_images; do
-		echo "![image]($img)" >> $md_file
+		echo "" >> $md_file
+		echo '<p align="center">' >> $md_file
+		echo "  <img src='$problem_description_images' />" >> $md_file
+		echo '</p>' >> $md_file
 	done
 
 	echo "" >> $md_file
