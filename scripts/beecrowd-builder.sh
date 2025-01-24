@@ -4,6 +4,7 @@ BEECROWD_BASE_URL="https://www.beecrowd.com.br/repository/UOJ_"
 SUPPORTED_LANGS=("Português" "English")
 LANG=""
 PROBLEM_ID=""
+RANDOM_MAX_ID=3484
 
 get_problem() {
 	problem_url="${BEECROWD_BASE_URL}${PROBLEM_ID}${LANG}.html"
@@ -58,12 +59,28 @@ save_test_cases() {
 	done
 }
 
+random_problem() {
+	PROBLEM_ID=$(shuf -i 1000-$RANDOM_MAX_ID -n 1)
+
+	local resolved_problems=$(ls -d */ | grep -oE '[0-9]+' | sort -n)
+	while [[ $resolved_problems == *$PROBLEM_ID* ]]; do
+		PROBLEM_ID=$(shuf -i 1-$RANDOM_MAX_ID -n 1)
+	done
+
+	echo "🎲 Exercício aleatório selecionado: $PROBLEM_ID"
+	echo ""
+}
+
 select_exercise() {
-	read -p "Digite o ID do exercício que deseja baixar: " PROBLEM_ID
+	read -p "Digite o ID do exercício que deseja baixar ou 0 para um exercício aleatório: " PROBLEM_ID
+
+	if [ "$PROBLEM_ID" -eq 0 ]; then
+		random_problem
+	fi
 }
 
 select_language() {
-	PS3="Em qual idioma deseja baixar o exercício? "
+	PS3="🌐 Em qual idioma deseja baixar o exercício? "
   select opt in "${SUPPORTED_LANGS[@]}"; do
     case $opt in
 			"Português")
@@ -90,7 +107,7 @@ menu() {
 	save_to_md
 	save_test_cases
 
-	echo "Exercício $PROBLEM_ID baixado com sucesso!"
+	echo "Exercício $PROBLEM_ID baixado com sucesso! ✅🎉"
 }
 
 # clear the screen
