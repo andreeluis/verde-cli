@@ -1,7 +1,7 @@
 #!/bin/bash -eu
 
 DIR=$(readlink $(which verde) | xargs dirname)
-SCRIPTS_DIR="$DIR/scripts/"
+SCRIPTS_DIR="$DIR/scripts"
 SUPPORTED_LANGUAGES=("c" "cpp" "java")
 CODE_FILE=""
 CODE_LANGUAGE=""
@@ -90,6 +90,7 @@ get_files_diff() {
 compile() {
   case $CODE_LANGUAGE in
     "java")
+			find . -name "*.class" -delete
       javac "$CODE_FILE"
       ;;
     "c")
@@ -174,11 +175,11 @@ menu() {
   PS3="Selecione a opção desejada: "
   select opt in "Compilar e executar código" "Executar casos de teste" "TP Builder" "Beecrowd Builder"; do
     case $opt in
-      "Executar código")
+      "Compilar e executar código")
         compile_and_execute
         break
         ;;
-      "Corrigir exercício")
+      "Executar casos de teste")
         execute_tests
         break
         ;;
@@ -210,14 +211,14 @@ builders_menu() {
 				;;
 			"Beecrowd Builder")
 				bash "$SCRIPTS_DIR/beecrowd-builder.sh"
-        exit 0
-        ;;
-      *)
-        echo "Opção inválida!"
-        exit 1
-        ;;
-    esac
-  done
+				exit 0
+				;;
+			*)
+				echo "Opção inválida!"
+				exit 1
+				;;
+		esac
+	done
 }
 
 # clear screen
