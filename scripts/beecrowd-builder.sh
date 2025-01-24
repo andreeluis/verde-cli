@@ -16,6 +16,8 @@ get_problem() {
 
 	problem_input=$(echo "$html" | htmlq --text 'div.input' | sed '/^\s*$/d' | sed 's/^\s*//g')
 	problem_output=$(echo "$html" | htmlq --text 'div.output' | sed '/^\s*$/d' | sed 's/^\s*//g')
+
+	problem_test_cases=$(echo "$html" | htmlq 'table')
 }
 
 save_to_md() {
@@ -39,6 +41,21 @@ save_to_md() {
 	echo "" >> $md_file
 	echo "> ### Output" >> $md_file
 	echo "> $problem_output" >> $md_file
+}
+
+save_test_cases() {
+	mkdir -p $PROBLEM_ID
+	local total_test_cases=$(echo "$problem_test_cases" | grep '<table>' | wc -l)
+
+	for i in $(seq 1 $total_test_cases); do
+		local test_case=$(echo "$problem_test_cases" | htmlq "table:nth-child($i)")
+
+		local input=$(echo "$test_case" | htmlq --text "tbody td.division p" | sed '1{/^\s*$/d}; ${/^\s*$/d}')
+		local output=$(echo "$test_case" | htmlq --text "tbody td:not(.division) p" | sed '1{/^\s*$/d}; ${/^\s*$/d}')
+
+		echo "$input" > "${PROBLEM_ID}/pub${i}.in"
+		echo "$output" > "${PROBLEM_ID}/pub${i}.out"
+	done
 }
 
 select_exercise() {
@@ -71,6 +88,7 @@ menu() {
 	select_language
 	get_problem
 	save_to_md
+	save_test_cases
 
 	echo "Exercício $PROBLEM_ID baixado com sucesso!"
 }
