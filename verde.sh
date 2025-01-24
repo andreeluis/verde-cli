@@ -1,7 +1,7 @@
 #!/bin/bash -eu
 
 DIR=$(readlink $(which verde) | xargs dirname)
-TP_BUILDER_DIR="$DIR/scripts/tp-builder.sh"
+SCRIPTS_DIR="$DIR/scripts/"
 SUPPORTED_LANGUAGES=("c" "cpp" "java")
 CODE_FILE=""
 CODE_LANGUAGE=""
@@ -172,7 +172,7 @@ menu() {
   echo "Bem-vindo ao Verde CLI!"
 
   PS3="Selecione a opção desejada: "
-  select opt in "Compilar e executar código" "Executar casos de teste" "TP Builder"; do
+  select opt in "Compilar e executar código" "Executar casos de teste" "TP Builder" "Beecrowd Builder"; do
     case $opt in
       "Executar código")
         compile_and_execute
@@ -183,7 +183,33 @@ menu() {
         break
         ;;
       "TP Builder")
-        bash "$TP_BUILDER_DIR"
+        bash "$SCRIPTS_DIR/tp-builder.sh"
+        exit 0
+        ;;
+			"Beecrowd Builder")
+				bash "$SCRIPTS_DIR/beecrowd-builder.sh"
+				exit 0
+				;;
+      *)
+        echo "Opção inválida!"
+        exit 1
+        ;;
+    esac
+  done
+}
+
+builders_menu() {
+	echo "Bem-vindo ao Verde CLI!"
+
+	PS3="Selecione o builder que deseja utilizar: "
+	select opt in "TP Builder" "Beecrowd Builder"; do
+		case $opt in
+			"TP Builder")
+				bash "$SCRIPTS_DIR/tp-builder.sh"
+				exit 0
+				;;
+			"Beecrowd Builder")
+				bash "$SCRIPTS_DIR/beecrowd-builder.sh"
         exit 0
         ;;
       *)
@@ -209,7 +235,7 @@ while getopts 'hctb' opt; do
       exit 0
       ;;
     b)
-      bash "$TP_BUILDER_DIR"
+      builders_menu
       exit 0
       ;;
     *)
@@ -218,7 +244,7 @@ while getopts 'hctb' opt; do
       echo "  -h  Mostra esta mensagem de ajuda"
       echo "  -c  Compila e executa seu código"
       echo "  -t  Executa os casos de teste"
-      echo "  -b  Executa o TP Builder"
+      echo "  -b  Menu do Beecrowd Builder e TP Builder"
 
       exit 0
       ;;
