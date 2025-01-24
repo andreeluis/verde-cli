@@ -52,7 +52,7 @@ save_test_cases() {
 		local test_case=$(echo "$problem_test_cases" | htmlq "table:nth-child($i)")
 
 		local input=$(echo "$test_case" | htmlq --text "tbody td.division p" | sed '1{/^\s*$/d}; ${/^\s*$/d}')
-		local output=$(echo "$test_case" | htmlq --text "tbody td:not(.division) p" | sed '1{/^\s*$/d}; ${/^\s*$/d}')
+		local output=$(echo "$test_case" | htmlq --text "tbody td:not(.division) p" | sed '1{/^\s*$/d}; ${/^\s*$/d}' | sed 's/^[ \t]*//')
 
 		echo "$input" > "${PROBLEM_ID}/pub${i}.in"
 		echo "$output" > "${PROBLEM_ID}/pub${i}.out"
