@@ -1,11 +1,22 @@
-# Verde CLI
-O **Verde CLI** é uma ferramenta de linha de comando desenvolvida para facilitar e automatizar processos de desenvolvimento de códigos. Com o **Verde CLI**, você pode:
+<h1 align="center">
+	Verde CLI
+</h1>
+
+<p align="center">
+	<img alt="Shell Script Badge" src="https://img.shields.io/badge/Shell%20Script-%230d1117?style=for-the-badge&logo=gnubash&logoColor=%23f0f6fc">
+	<img alt="Linux Badge" src="https://img.shields.io/badge/Linux-%23f0f6fc?style=for-the-badge&logo=linux&logoColor=%230d1117">
+	<img alt="CLI Badge" src="https://img.shields.io/badge/CLI-%230d1117?style=for-the-badge&logo=gnometerminal&logoColor=%23f0f6fc">
+</p>
+
+O **Verde CLI** é uma ferramenta de linha de comando desenvolvida para facilitar e automatizar processos de desenvolvimento de códigos.
+
+Com o **Verde CLI**, você pode:
 - Compilar e executar códigos
 - Testar códigos
+- Baixar [trabalhos práticos de AEDS II](https://github.com/icei-pucminas/aeds2/tree/master/tps) (**TP Builder**)
+- Baixar [problemas do Beecrowd](https://beecrowd.com/) (**Beecrowd Builder**)
 
-Também é possível fazer o download automatizado dos arquivos dos [trabalhos práticos de AEDS II](https://github.com/icei-pucminas/aeds2/tree/master/tps), com o **TP Builder**.
-
-Você pode assistir a [apresentação do **Verde CLI**](https://www.youtube.com/watch?v=gBBXjS0McjM) no YouTube clicando na imagem abaixo:
+Assista a [apresentação do **Verde CLI** no YouTube](https://www.youtube.com/watch?v=gBBXjS0McjM) clicando na imagem abaixo:
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=gBBXjS0McjM">
@@ -14,14 +25,15 @@ Você pode assistir a [apresentação do **Verde CLI**](https://www.youtube.com/
 </p>
 
 ## 📋 Pré-requisitos
-Para usar o **Verde CLI**, você precisa estar em um ambiente Linux e ter as seguintes ferramentas instaladas em seu computador:
+Para usar o **Verde CLI**, é necessário estar em um ambiente Linux e ter as seguintes ferramentas instaladas em seu computador:
 - [Git](https://git-scm.com/)
-- [GCC e G++](https://gcc.gnu.org/) (Compilador de C e C++)
-- [Java](https://www.java.com/pt-BR/download/) (Java Development Kit)
+- [Compilador de C e C++](https://gcc.gnu.org/) (Para compilar códigos C e C++)
+- [Java Development Kit](https://www.java.com/pt-BR/download/) (Para compilar códigos Java)
 
-E caso você deseje usar o **TP Builder**, você também precisa ter instalado:
+E para usar o **TP Builder** e o **Beecrowd Builder**, é necessário ter as seguintes ferramentas instaladas:
 - [curl](https://curl.se/)
 - [jq](https://stedolan.github.io/jq/)
+- [htmlq](https://github.com/mgdm/htmlq)
 
 ## 🚀 Como Usar
 Para usar o **Verde CLI**, siga os passos abaixo:
@@ -55,7 +67,7 @@ Pronto! Agora o **Verde CLI** está instalado em seu computador e pronto para se
 - Utilizando as flags para utilizar as funcionalidades:
   - `verde -c`: Compila e executa o código
   - `verde -t`: Compila, executa e testa o código
-  - `verde -b`: Baixa os arquivos dos trabalhos práticos de AEDS II
+  - `verde -b`: Abre o menu do **TP Builder** e do **Beecrowd Builder**
 - Utilizando o menu de opções:
   
   Basta executar o comando `verde` e escolher entre as opções disponíveis.
